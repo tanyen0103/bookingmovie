@@ -1,0 +1,21 @@
+<template>
+    <lightning-card class="card slds-text-align_center slds-m-around_x-small" onclick={handleOpenRecordClick}>
+        <h3 slot="title">
+            {movie.Title__c}
+        </h3>
+        <div class="img-wrapper">
+            <img src={movie.picture_URL__c} alt={movie.Title__c}>
+        </div>
+        <ul class="slds-m-top_x-small">
+            <li>
+                <p>Duration: {movie.Duration__c}'</p>
+            </li>
+            <li>
+                <p>Status: {movie.Genre__c}</p>
+            </li>
+        </ul>
+        <div slot="footer">
+                <lightning-badge label={movie.Status__c}></lightning-badge>
+        </div>
+    </lightning-card>
+</template>

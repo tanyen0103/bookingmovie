@@ -1,0 +1,69 @@
+<template>
+    <!-- Search  -->
+    <lightning-card>
+        <lightning-layout>
+
+            <!-- Input Search  -->
+            <lightning-layout-item flexibility="auto" padding="around-small">
+                <lightning-input type="search" onchange={handleSearchKeyChange} variant="label-hidden"
+                    class="slds-var-m-bottom_small" label="Search" placeholder="Search for movies" value={searchKey}>
+                </lightning-input>
+            </lightning-layout-item>
+
+            <!-- Input Start Date -->
+            <lightning-layout-item flexibility="auto" padding="around-small">
+                <lightning-input type="date" name="startDate" variant="label-hidden"
+                    placeholder="Start Date" onchange={handleDateChange}></lightning-input>
+            </lightning-layout-item>
+
+            <!-- Input End Date -->
+            <lightning-layout-item flexibility="auto" padding="around-small">
+                <lightning-input type="date" name="endDate" variant="label-hidden"
+                    placeholder="End date" onchange={handleDateChange}></lightning-input>
+                    <template if:true={errorDate}>
+                        <p class="slds-text-color_error">{errorDate}</p>
+                    </template>
+            </lightning-layout-item>
+
+            <!-- Button Click Search Date -->
+            <lightning-layout-item flexibility="auto" padding="around-small">
+                <lightning-button label="Search" type="button" onclick={handleSearchClick}></lightning-button>
+            </lightning-layout-item>
+
+        </lightning-layout>
+    </lightning-card>
+    <!-- List -->
+    <lightning-card>
+        <!-- Start movie list -->
+        <template if:true={movies.data}>
+            <div class="c-container">
+                <lightning-layout horizontal-align="space">
+                    <div class="slds-grid slds-wrap">
+                        <template for:each={movies.data} for:item="movie">
+                            <lightning-layout-item key={movie.Id} padding="around-small">
+                                <!-- Start movie tile -->
+                                    <c-movie-title movie={movie} onmovieview={handleMovieView} class="slds-col slds-size_3-of-12"></c-movie-title>
+                                <!-- End movie tile -->
+                            </lightning-layout-item>
+                        </template>
+                    </div>
+                </lightning-layout>
+                <!-- No movies found -->
+                <template if:false={hasResults}>
+                    <div class="slds-align_absolute-center slds-var-m-vertical_small">
+                        We did not find results...
+                    </div>
+                </template>
+            </div>
+        </template>
+        <!-- End movie list -->
+        <!-- Data failed to load -->
+        <template if:true={movies.error}>
+            <div class="slds-text-color_error">
+                An error occurred while loading the movie list
+            </div>
+        </template>
+    </lightning-card>
+
+    
+</template>

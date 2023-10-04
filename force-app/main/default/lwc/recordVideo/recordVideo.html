@@ -1,0 +1,12 @@
+<template>
+    <div class="video">
+        <lightning-card  title={title} icon-name="standard:address">
+            <div class="slds-align_absolute-center">
+                <iframe width="300" height="150" src={videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="slds-align_absolute-center slds-m-top_x-small">
+                <lightning-button variant="brand" label="TRAILER" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </lightning-card>
+    </div>
+</template>

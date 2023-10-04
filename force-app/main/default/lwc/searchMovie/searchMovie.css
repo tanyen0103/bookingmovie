@@ -1,0 +1,17 @@
+
+.flex-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    border: none;
+    border-radius: 0.25rem;
+    padding: 6px 18px;
+    background-color: #e20808;
+    color: white;
+    font-weight: bold;
+    box-shadow: 5px 5px #0000;
+}
+
